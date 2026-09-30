@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-navy-950: var(--bg-page);
+  --color-navy-900: var(--bg-card);
+  --color-navy-850: var(--bg-card-hover);
+  --color-navy-800: var(--bg-card-inner);
+  --color-navy-700: var(--border-subtle);
+
+  --color-gold-50: #fcf9f2;
+  --color-gold-100: #f6edd9;
+  --color-gold-200: #edd7af;
+  --color-gold-300: var(--text-gold);
+  --color-gold-400: var(--text-gold-accent);
+  --color-gold-500: #c5a880;
+  --color-gold-600: #b18a3e;
+}
+
+:root, html.dark {
+  --bg-page: #060a12;
+  --bg-page-subtle: #090f1d;
+  --bg-card: #0d1527;
+  --bg-card-hover: #121c32;
+  --bg-card-inner: #070c17;
+  --bg-navbar: rgba(6, 10, 18, 0.88);
+  --bg-input: #070c17;
+  --bg-badge: rgba(197, 168, 128, 0.12);
+
+  --text-title: #f8fafc;
+  --text-heading: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-gold: #edd7af;
+  --text-gold-accent: #c5a880;
+
+  --border-subtle: rgba(197, 168, 128, 0.18);
+  --border-card: rgba(197, 168, 128, 0.28);
+  --border-card-hover: rgba(197, 168, 128, 0.55);
+  --border-input: rgba(148, 163, 184, 0.22);
+
+  --gold-glow: rgba(197, 168, 128, 0.15);
+  --card-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6);
+  --card-gradient: linear-gradient(180deg, rgba(13, 21, 39, 0.95) 0%, rgba(10, 17, 32, 0.95) 100%);
+  --gold-gradient: linear-gradient(135deg, #FFF3D6 0%, #E3BE83 50%, #B8934C 100%);
+  --bg-page-gradient: linear-gradient(180deg, rgba(6, 10, 18, 0.35) 0%, rgba(8, 14, 26, 0.50) 50%, rgba(6, 10, 18, 0.65) 100%);
+}
+
+html.light {
+  --bg-page: #f8f6f0;
+  --bg-page-subtle: #f2eee5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfbf7;
+  --bg-card-inner: #f6f3eb;
+  --bg-navbar: rgba(248, 246, 240, 0.92);
+  --bg-input: #ffffff;
+  --bg-badge: rgba(184, 137, 44, 0.12);
+
+  --text-title: #0a1120;
+  --text-heading: #0f172a;
+  --text-body: #283548;
+  --text-muted: #53647e;
+  --text-gold: #8f651c;
+  --text-gold-accent: #a07425;
+
+  --border-subtle: rgba(184, 137, 44, 0.24);
+  --border-card: rgba(184, 137, 44, 0.32);
+  --border-card-hover: rgba(184, 137, 44, 0.65);
+  --border-input: rgba(184, 137, 44, 0.32);
+
+  --gold-glow: rgba(184, 137, 44, 0.15);
+  --card-shadow: 0 10px 30px -8px rgba(140, 105, 35, 0.12);
+  --card-gradient: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
+  --gold-gradient: linear-gradient(135deg, #9C7738 0%, #B8934C 50%, #6E4E18 100%);
+  --bg-page-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.40) 0%, rgba(248, 246, 240, 0.55) 50%, rgba(255, 255, 255, 0.65) 100%);
+}
+
+@layer base {
+  body {
+    background-color: transparent;
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: color 0.25s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading);
+  }
+}
+
+/* Universal Theme Card Classes */
+.card-theme {
+  background: var(--card-gradient) !important;
+  border: 1px solid var(--border-card) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: all 0.25s ease;
+}
+
+.card-theme:hover {
+  border-color: var(--border-card-hover) !important;
+}
+
+.card-inner-theme {
+  background-color: var(--bg-card-inner) !important;
+  border: 1px solid var(--border-subtle) !important;
+}
+
+.text-title-theme {
+  color: var(--text-title) !important;
+}
+
+.text-heading-theme {
+  color: var(--text-heading) !important;
+}
+
+.text-body-theme {
+  color: var(--text-body) !important;
+}
+
+.text-muted-theme {
+  color: var(--text-muted) !important;
+}
+
+.text-gold-theme {
+  color: var(--text-gold) !important;
+}
+
+.border-theme {
+  border-color: var(--border-subtle) !important;
+}
+
+.input-theme {
+  background-color: var(--bg-input) !important;
+  color: var(--text-heading) !important;
+  border: 1px solid var(--border-input) !important;
+}
+
+.input-theme:focus {
+  border-color: var(--text-gold-accent) !important;
+}
+
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(184, 137, 44, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 137, 44, 0.05) 1px, transparent 1px);
+}
+
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-scrolled {
+  background-color: var(--bg-navbar) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* Site-Wide Fixed Background Canvas (Smooth Crossfade for Day & Night) */
+.site-bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-bg-night {
+  background-image: url('/bg2.png');
+  opacity: 0;
+}
+
+.site-bg-day {
+  background-image: url('/bg.png');
+  opacity: 0;
+}
+
+html.light .site-bg-night {
+  opacity: 0;
+}
+
+html.light .site-bg-day {
+  opacity: 1;
+}
+
+html.dark .site-bg-night {
+  opacity: 1;
+}
+
+html.dark .site-bg-day {
+  opacity: 0;
+}
+
+.site-bg-tint {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--bg-page-gradient);
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
